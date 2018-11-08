@@ -1,0 +1,15 @@
+{
+  "name": "whatsmyfit-write-lambda",
+  "version": "1.0.0",
+  "description": "WhatsMyFit Write Lambda functions",
+  "keywords": [
+    "whatsmyfit"
+  ],
+  "author": "Ismar Slomic",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.15",
+    "serverless-offline": "^3.31.1",
+    "serverless-plugin-typescript": "^1.1.5"
+  }
+}
