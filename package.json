@@ -1,15 +1,28 @@
 {
-  "name": "whatsmyfit-write-lambda",
-  "version": "1.0.0",
-  "description": "WhatsMyFit Write Lambda functions",
-  "keywords": [
-    "whatsmyfit"
-  ],
-  "author": "Ismar Slomic",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/aws-lambda": "^8.10.15",
-    "serverless-offline": "^3.31.1",
-    "serverless-plugin-typescript": "^1.1.5"
-  }
+    "name": "whatsmyfit-write-lambda",
+    "version": "1.0.0",
+    "description": "WhatsMyFit Write Lambda functions",
+    "keywords": [
+        "whatsmyfit"
+    ],
+    "author": "Ismar Slomic",
+    "license": "ISC",
+    "scripts": {
+        "build": "npm run clean && tsc && npm run lint",
+        "clean": "rimraf .build",
+        "lint": "tslint -c tslint.json 'src/**/*.ts'",
+        "tsc": "tsc",
+        "test": "mocha -r ts-node/register src/**/*.spec.ts"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.15",
+        "@types/node": "^10.12.3",
+        "rimraf": "^2.6.2",
+        "serverless-offline": "^3.31.1",
+        "serverless-plugin-typescript": "^1.1.5",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0",
+        "typescript": "^3.1.6",
+        "typescript-eslint-parser": "^20.1.1"
+    }
 }

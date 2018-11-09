@@ -56,7 +56,7 @@ provider:
 
 functions:
   hello:
-    handler: handlers.hello
+    handler: src/handlers.hello
 
     events:
       - http:
@@ -113,6 +113,4 @@ plugins:
 
 package:
   exclude:
-    - node_modules/**/*
-  include:
-    handlers.ts
+    - node_modules/**
