@@ -55,13 +55,26 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: src/handlers.hello
+  notification:
+    handler: src/handlers.notification
 
     events:
       - http:
-          path: hello
-          method: get
+          path: notifications
+          method: post
+          documentation:
+            summary: Create new Fitbit Notification
+            description: Create new Fitbit Notification
+            tags:
+            - Notifications
+            requestBody:
+              description: Array of Notifications to create
+            requestModels:
+              "application/json": NotificationArray
+            methodResponses:
+            - statusCode: "204"
+              responseBody:
+                description: Notifications created
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -108,9 +121,58 @@ functions:
 #       Description: "Description for the output"
 #       Value: "Some output value"
 plugins:
+  - serverless-aws-documentation
   - serverless-plugin-typescript
   - serverless-offline
 
 package:
   exclude:
     - node_modules/**
+
+# API documentation
+custom:
+  documentation:
+    api:
+      info:
+        version: '2'
+        title: WhatsMyFit Write APIs
+        description: REST APIs to write data to WhatsMyFit
+        contact:
+          name: Ismar Slomic
+          url: https://whatsmy.fit
+          email: ismar@slomic.no
+        license:
+          name: Licensing
+          url: https://whatsmy.fit
+    tags:
+      - name: Notifications
+        description: Api to retrieve new notifications from Fitbit Subscription API
+    resources:
+    -
+      path: "notifications"
+      description: "Fitbit Notifications resource"
+    models:
+      -
+        name: "Notification"
+        description: "Notification to be created"
+        contentType: "application/json"
+        schema:
+          type: "object"
+          properties:
+            collectionType:
+              type: "string"
+            date:
+              type: "string"
+            ownerId:
+              type: "string"
+            ownerType:
+              type: "string"
+            subscriptionId:
+              type: "string"
+      - name: "NotificationArray"
+        description: "Array of Notifications to be created"
+        contentType: "application/json"
+        schema:
+          type: "array"
+          items:
+            $ref: "{{model: Notification}}"
