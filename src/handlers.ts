@@ -1,4 +1,4 @@
-import { Callback, Context, Handler } from "aws-lambda";
+import { Callback, Context, Handler } from 'aws-lambda';
 
 interface IHelloResponse {
     statusCode: number;
@@ -8,9 +8,9 @@ interface IHelloResponse {
 const hello: Handler = (event: any, context: Context, callback: Callback) => {
     const response: IHelloResponse = {
         body: JSON.stringify({
-            message: Math.floor(Math.random() * 10),
+            message: Math.floor(Math.random() * 2)
         }),
-        statusCode: 200,
+        statusCode: 200
     };
 
     callback(undefined, response);

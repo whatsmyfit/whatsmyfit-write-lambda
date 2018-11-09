@@ -1,9 +1,105 @@
 {
-    "defaultSeverity": "error",
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
-    "rules": {},
-    "rulesDirectory": []
+    "jsRules": {
+        "max-line-length": [
+            true,
+            200
+        ],
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "semicolon": [
+            true,
+            "always"
+        ],
+        "trailing-comma": false
+    },
+    "rules": {
+        "adjacent-overload-signatures": true,
+        "arrow-parens": false,
+        "arrow-return-shorthand": false,
+        "curly": true,
+        "cyclomatic-complexity": [
+            true,
+            36
+        ],
+        "interface-over-type-literal": true,
+        "jsx-alignment": false,
+        "jsx-no-multiline-js": false,
+        "linebreak-style": [
+            true,
+            "LF"
+        ],
+        "max-file-line-count": [
+            true,
+            550
+        ],
+        "max-line-length": [
+            true,
+            200
+        ],
+        "member-access": true,
+        "new-parens": true,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-consecutive-blank-lines": [
+            true,
+            1
+        ],
+        "no-console": true,
+        "no-empty": true,
+        "no-invalid-template-strings": true,
+        "no-inferrable-types": true,
+        "no-magic-numbers": {
+            "options": [
+                -2,
+                -1,
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "severity": "warning"
+        },
+        "no-shadowed-variable": true,
+        "no-this-assignment": true,
+        "no-trailing-whitespace": [
+            true,
+            "ignore-comments",
+            "ignore-template-strings",
+            "ignore-blank-lines"
+        ],
+        "no-unnecessary-semicolons": false,
+        "no-unused-expression": true,
+        "no-var-keyword": true,
+        "no-var-requires": false,
+        "object-literal-sort-keys": false,
+        "prefer-const": true,
+        "prefer-object-spread": true,
+        "prefer-template": true,
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ],
+        "radix": true,
+        "semicolon": [
+            true,
+            "always",
+            "ignore-bound-class-methods"
+        ],
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "never",
+                "singleline": "never"
+            }
+        ]
+    }
 }
