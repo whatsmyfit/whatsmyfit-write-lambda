@@ -17,15 +17,15 @@ interface INotification {
 
 }
 
-const notification: Handler = (event: any, context: Context, callback: Callback) => {
+const create: Handler = (event: any, context: Context, callback: Callback) => {
     const response: INotificationResponse = {
         statusCode: 204
     };
 
-    const notificationArray = event.body as INotificationRequest;
+    const notificationArray: INotificationRequest = event.body as INotificationRequest;
     console.log(notificationArray);
 
     callback(undefined, response);
 };
 
-export { notification };
+export { create };

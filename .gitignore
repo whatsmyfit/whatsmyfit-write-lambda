@@ -11,3 +11,6 @@ jspm_packages
 # Build folder
 dist/
 .build/
+
+# Decrypted files
+secrets.*.yml
