@@ -15,6 +15,9 @@ $ sls offline start
 
 Open [http://localhost:3000/hello]( http://localhost:3000/hello) in web browser
 
+### Serverless workflow
+Read [Workflow](https://serverless.com/framework/docs/providers/aws/guide/workflow/) for recommendation on CI/CD workflow
+
 ### TSLint
 ```(bash)
 $ npm run lint
