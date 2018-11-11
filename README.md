@@ -26,8 +26,8 @@ We use [serverless-aws-documentation](https://github.com/deliveryhero/serverless
 ### Add/modify secrets
 We use [serverless-aws-secrets](https://github.com/serverless/serverless-secrets-plugin) for adding secrets as encrypted values in environment variables.
 
-NOTE 1! **Only encrypted secret files shall be commited to GIT**
-NOTE 2! **You need to make sure that you have decrypted secret file locally before deploying the service to AWS
+- NOTE 1! **Only encrypted secret files shall be commited to GIT**
+- NOTE 2! **You need to make sure that you have decrypted secret file locally before deploying the service to AWS**
 
 ```(bash)
 # Decrypt secrets and add/modify variables/secrets
