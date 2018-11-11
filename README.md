@@ -20,6 +20,23 @@ Open [http://localhost:3000/hello]( http://localhost:3000/hello) in web browser
 $ npm run lint
 ```
 
+### Swagger doc for APIs
+We use [serverless-aws-documentation](https://github.com/deliveryhero/serverless-aws-documentation#readme) plugin for documenting API Gateway endpoint.
+
+### Add/modify secrets
+We use [serverless-aws-secrets](https://github.com/serverless/serverless-secrets-plugin) for adding secrets as encrypted values in environment variables.
+
+NOTE 1! **Only encrypted secret files shall be commited to GIT**
+NOTE 2! **You need to make sure that you have decrypted secret file locally before deploying the service to AWS
+
+```(bash)
+# Decrypt secrets and add/modify variables/secrets
+$ serverless decrypt --stage dev --password '<insert encryption password>'
+
+# Encrypt secrets
+$ serverless encrypt --stage dev --password '<insert encryption password>'
+```
+
 ### AWS Account
 - To deploy lambda function to AWS you need an AWS account and an IAM user that has following permissions:
   - `AWSLambdaFullAccess`
