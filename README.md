@@ -18,9 +18,14 @@ Open [http://localhost:3000/hello]( http://localhost:3000/hello) in web browser
 ### Serverless workflow
 Read [Workflow](https://serverless.com/framework/docs/providers/aws/guide/workflow/) for recommendation on CI/CD workflow
 
+### Unit tests
+```(bash)
+$ yarn run lint
+```
+
 ### TSLint
 ```(bash)
-$ npm run lint
+$ yarn run test
 ```
 
 ### Swagger doc for APIs

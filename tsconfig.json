@@ -1,4 +1,5 @@
 {
+  // Read more at https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
   "compilerOptions": {
     /* Basic Options */
     "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
@@ -59,6 +60,6 @@
     "suppressImplicitAnyIndexErrors": true,   /* Suppress --noImplicitAny errors for indexing objects lacking index signatures. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "exclude": [ "node_modules", ".build", "webpack" ],
-  "types": [ "typePatches" ]
+  "exclude": [ "node_modules", ".build", "webpack", "__tests__" ],
+  "types": [ "typePatches", "node", "aws-sdk" ]
 }

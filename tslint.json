@@ -50,7 +50,7 @@
             true,
             1
         ],
-        "no-console": true,
+        "no-console": false,
         "no-empty": true,
         "no-invalid-template-strings": true,
         "no-inferrable-types": true,

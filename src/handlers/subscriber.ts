@@ -1,12 +1,5 @@
 import { Callback, Context, Handler } from 'aws-lambda';
-
-interface ISubscriberVerifyResponse {
-    statusCode: number;
-}
-
-interface ISubscriberVerifyRequestParams {
-    verify: string;
-}
+import { ISubscriberVerifyRequestParams, ISubscriberVerifyResponse } from '../types';
 
 const verify: Handler = (event: any, context: Context, callback: Callback) => {
     let response: ISubscriberVerifyResponse;
