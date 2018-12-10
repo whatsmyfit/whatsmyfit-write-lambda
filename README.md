@@ -52,3 +52,8 @@ $ serverless encrypt --stage dev --password '<insert encryption password>'
   - AWS Api Gateway full access (create inline policy)
   - AWS Cloud Formation full access (create inline policy)
 - Make sure to install [AWS CLI](https://aws.amazon.com/cli/) on your machine
+
+### Check outdated NPM dependencies
+```(bash)
+$ npm outdated
+```
