@@ -16,6 +16,7 @@ const verify: Handler = (event: any, context: Context, callback: Callback) => {
             statusCode: 204
         };
     }
+
     callback(undefined, response);
 };
 
