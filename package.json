@@ -15,11 +15,11 @@
         "test": "yarn run build && jest"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.15",
+        "@types/aws-lambda": "^8.10.16",
         "@types/jest": "^23.3.10",
-        "@types/node": "^10.12.15",
+        "@types/node": "^10.12.18",
         "@types/uuid": "^3.4.4",
-        "aws-sdk": "^2.378.0",
+        "aws-sdk": "^2.379.0",
         "aws-sdk-mock": "^4.3.0",
         "jest": "^23.6.0",
         "rimraf": "^2.6.2",
