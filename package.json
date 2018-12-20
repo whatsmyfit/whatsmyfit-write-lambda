@@ -17,7 +17,7 @@
         "i-test": "yarn run build && jest -c jest.config.integration.js"
     },
     "devDependencies": {
-        "@types/aws-lambda": "^8.10.16",
+        "@types/aws-lambda": "^8.10.17",
         "@types/jest": "^23.3.10",
         "@types/node": "^10.12.18",
         "@types/uuid": "^3.4.4",
