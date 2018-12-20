@@ -18,10 +18,11 @@ provider:
 # Resources
 resources:
   Resources:
-    TodosDynamoDbTable:
+    notificationsTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -31,7 +32,6 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
 
 # Lambda functions
 functions:
@@ -84,6 +84,7 @@ functions:
 plugins:
   - serverless-aws-documentation
   - serverless-plugin-typescript
+  - serverless-dynamodb-local
   - serverless-offline
   - serverless-secrets-plugin
 
@@ -95,6 +96,21 @@ package:
 # API documentation
 custom:
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  DB_PREFIX: dev
+  dynamodb:
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    seed:
+      domain:
+        sources:
+          - table: ${self:provider.environment.DYNAMODB_TABLE}
+            sources: [./offline/migrations/notifications-seed.json]
   documentation:
     api:
       info:

@@ -1,10 +1,10 @@
 import { create } from '../../src/handlers/notifications';
-import { INotification, INotificationRequest } from '../../src/types';
+import { INotification } from '../../src/types';
 
 describe('notifications handler', () => {
     const AWSMock = require('aws-sdk-mock');
-    const spyConsoleError = jest.spyOn( global.console, 'error' );
-    const spyConsoleDebug = jest.spyOn( global.console, 'debug' );
+    const spyConsoleError = jest.spyOn(global.console, 'error');
+    const spyConsoleDebug = jest.spyOn(global.console, 'debug');
 
     beforeAll(() => {
         const AWS = require('aws-sdk');
@@ -27,7 +27,6 @@ describe('notifications handler', () => {
     });
 
     test('should return 204 if saved successfully to db', () => {
-        let notificationRequest: INotificationRequest;
         const notifications: INotification[] = [
             {
                 collectionType: 'foods',
@@ -51,25 +50,22 @@ describe('notifications handler', () => {
                 subscriptionId: '2345'
             }
         ];
-        notificationRequest = {notifications};
 
         // @ts-ignore
-        create({body: notificationRequest}, null, (error: any, response: any) => {
+        create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
             expect(response.statusCode).toEqual(204);
-            expect( spyConsoleDebug ).toHaveBeenCalledTimes(1);
+            expect(spyConsoleDebug).toHaveBeenCalledTimes(1);
         });
 
     });
 
     test('should return 204 if error while saving to db', () => {
-        let notificationRequest: INotificationRequest;
         const notifications: INotification[] = [];
-        notificationRequest = {notifications};
 
         // @ts-ignore
-        create({body: notificationRequest}, null, (error: any, response: any) => {
+        create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
             expect(response.statusCode).toEqual(204);
-            expect( spyConsoleError).toHaveBeenCalledTimes(1);
+            expect(spyConsoleError).toHaveBeenCalledTimes(1);
         });
     });
 });

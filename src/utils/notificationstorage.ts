@@ -13,7 +13,7 @@ class NotificationStorage implements INotificationStorage {
         const putRequest: INotificationStorageRequest = this.createPutRequest(notifications);
 
         if (Object.keys(putRequest.RequestItems).length > 0) {
-            const documentClient: AWS.DynamoDB.Types.DocumentClient = new DynamoDB.DocumentClient();
+            const documentClient: AWS.DynamoDB.Types.DocumentClient = this.createDynamoDbClient();
             return documentClient.batchWrite(putRequest as BatchWriteItemInput).promise();
         } else {
             return Promise.reject('Array of notifications where empty');
@@ -38,7 +38,9 @@ class NotificationStorage implements INotificationStorage {
 
         for (const notificationEvent of notificationEvents) {
             const putRequest: IPutRequest = {
-                Item: notificationEvent
+                PutRequest: {
+                    Item: notificationEvent
+                }
             };
             putRequests.push(putRequest);
         }
@@ -75,6 +77,20 @@ class NotificationStorage implements INotificationStorage {
         }
 
         return notificationEventArray;
+    }
+
+    /**
+     * Used to create DynamoDB client pointing to local db when running with serverless offline, and using online version otherwise
+     */
+    private createDynamoDbClient(): DynamoDB.DocumentClient {
+        const dynamodbOfflineOptions = {
+            region: 'localhost',
+            endpoint: 'http://localhost:8000'
+        };
+
+        const isOffline = () => process.env.IS_OFFLINE;
+
+        return isOffline() ? new DynamoDB.DocumentClient(dynamodbOfflineOptions) : new DynamoDB.DocumentClient();
     }
 }
 

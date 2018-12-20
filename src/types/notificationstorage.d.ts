@@ -17,5 +17,7 @@ interface IRequestItems {
 }
 
 interface IPutRequest {
-    Item: INotificationEvent;
+    PutRequest: {
+        Item: INotificationEvent
+    };
 }
