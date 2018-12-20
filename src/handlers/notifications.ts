@@ -13,12 +13,12 @@ const create: Handler = (event: any, context: Context, callback: Callback) => {
     const notificationStorage: INotificationStorage = new NotificationStorage();
 
     notificationStorage.saveToDynamoDb(notifications)
-        .catch((error) => {
-            console.error(`Error while saving Notifications to DynamoDB: ${error}`);
-            callback(undefined, response);
-        })
         .then((data) => {
             console.debug(`Notifications saved successfully to DynamoDB: ${JSON.stringify(data)}`);
+            callback(undefined, response);
+        })
+        .catch((error) => {
+            console.error(`Error while saving Notifications to DynamoDB: ${error}`);
             callback(undefined, response);
         });
 };

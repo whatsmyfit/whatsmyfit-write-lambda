@@ -55,8 +55,8 @@ describe('notifications handler', () => {
         create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
             expect(response.statusCode).toEqual(204);
             expect(spyConsoleDebug).toHaveBeenCalledTimes(1);
+            expect(spyConsoleError).toHaveBeenCalledTimes(0);
         });
-
     });
 
     test('should return 204 if error while saving to db', () => {
@@ -65,6 +65,7 @@ describe('notifications handler', () => {
         // @ts-ignore
         create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
             expect(response.statusCode).toEqual(204);
+            expect(spyConsoleDebug).toHaveBeenCalledTimes(0);
             expect(spyConsoleError).toHaveBeenCalledTimes(1);
         });
     });
