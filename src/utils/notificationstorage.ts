@@ -88,6 +88,7 @@ class NotificationStorage implements INotificationStorage {
             endpoint: 'http://localhost:8000'
         };
 
+        // Env variable IS_OFFLINE is automatically set to TRUE by serverless-offline, otherwise it will be false
         const isOffline = () => process.env.IS_OFFLINE;
 
         return isOffline() ? new DynamoDB.DocumentClient(dynamodbOfflineOptions) : new DynamoDB.DocumentClient();

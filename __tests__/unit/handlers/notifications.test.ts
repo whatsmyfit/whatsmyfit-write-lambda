@@ -1,5 +1,5 @@
-import { create } from '../../src/handlers/notifications';
-import { INotification } from '../../src/types';
+import { create } from '../../../src/handlers/notifications';
+import { INotification } from '../../../src/types';
 
 describe('notifications handler', () => {
     const AWSMock = require('aws-sdk-mock');

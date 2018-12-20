@@ -12,7 +12,9 @@
         "clean": "rimraf .build",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "tsc": "tsc",
-        "test": "yarn run build && jest"
+        "test": "yarn run build && jest",
+        "u-test": "yarn run build && jest -c jest.config.unit.js",
+        "i-test": "yarn run build && jest -c jest.config.integration.js"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.16",

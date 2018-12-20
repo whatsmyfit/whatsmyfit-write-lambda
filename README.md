@@ -7,8 +7,11 @@ $ npm i serverless -g
 $ sls dynamodb install
 ```
 
-### Run lambda functions locally
-[serverless-offline plugin](https://www.npmjs.com/package/serverless-offline) and [serverless-plugin-typescript](https://www.npmjs.com/package/serverless-plugin-typescript) might be helpful
+### Run lambda functions locally with local DynamoDB
+- [serverless-offline plugin](https://www.npmjs.com/package/serverless-offline) and [serverless-plugin-typescript](https://www.npmjs.com/package/serverless-plugin-typescript) are used.
+- We use [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local) plugin to run DynamoDB locally. See also example [serverless-react-boilerplate](https://github.com/99xt/serverless-react-boilerplate)
+- When you run `sls offline start` DynamoDB will be started locally and seeded according to the `serverless.yml` configuration. Visit DynamoDB Shell at http://localhost:8000/shell
+
 ```(bash)
 $ yarn install
 $ sls offline start
@@ -24,20 +27,22 @@ Read [Workflow](https://serverless.com/framework/docs/providers/aws/guide/workfl
 $ yarn run lint
 ```
 
-### Unit tests
+### Tests
 ```(bash)
+# Run unit and integration tests
 $ yarn run test
-```
 
-### Start local DynamoDB when running serverless offline
-- We use [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local) plugin to run DynamoDB locally. See also example [serverless-react-boilerplate](https://github.com/99xt/serverless-react-boilerplate)
-- When you run `sls offline start` to start DynamoDB will be started locally and seeded according to the serverless.yml configuration. Visit DynamoDB Shell at http://localhost:8000/shell
+# Run unit tests only
+$ yarn run u-test
+
+# Run integration tests only
+$ yarn run i-test
+```
 
 ### Debug with serverless-offline in Intellij
 - Set breakpoints in Typescript code
 - Setup new `Node.js` run configuration with **Application Parameters**: `/usr/local/bin/sls offline start`
 - Press the Debug-button
-
 
 ### Swagger doc for APIs
 We use [serverless-aws-documentation](https://github.com/deliveryhero/serverless-aws-documentation#readme) plugin for documenting API Gateway endpoint.

@@ -1,6 +1,6 @@
-import { EventStatus } from '../../src/enums/notificationeventstatus';
-import { INotification, INotificationEvent, INotificationStorageRequest, IPutRequest } from '../../src/types';
-import { NotificationStorage } from '../../src/utils/notificationstorage';
+import { EventStatus } from '../../../src/enums/notificationeventstatus';
+import { INotification, INotificationEvent, INotificationStorageRequest, IPutRequest } from '../../../src/types';
+import { NotificationStorage } from '../../../src/utils/notificationstorage';
 
 describe('saveToDynamoDb()', () => {
     let notificationStorage: NotificationStorage;
