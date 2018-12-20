@@ -19,7 +19,7 @@
         "@types/jest": "^23.3.10",
         "@types/node": "^10.12.18",
         "@types/uuid": "^3.4.4",
-        "aws-sdk": "^2.379.0",
+        "aws-sdk": "^2.380.0",
         "aws-sdk-mock": "^4.3.0",
         "jest": "^23.6.0",
         "rimraf": "^2.6.2",
