@@ -14,12 +14,13 @@
         "tsc": "tsc",
         "test": "yarn run build && jest",
         "u-test": "yarn run build && jest -c jest.config.unit.js",
-        "i-test": "yarn run build && jest -c jest.config.integration.js"
+        "i-test": "yarn run build && jest -c jest.config.integration.js --detectOpenHandles"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.17",
         "@types/jest": "^23.3.10",
         "@types/node": "^10.12.18",
+        "@types/supertest": "^2.0.7",
         "@types/uuid": "^3.4.4",
         "aws-sdk": "^2.382.0",
         "aws-sdk-mock": "^4.3.0",
@@ -30,6 +31,7 @@
         "serverless-offline": "^3.31.3",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",
+        "supertest": "^3.3.0",
         "ts-jest": "^23.10.5",
         "ts-node": "^7.0.1",
         "tslint": "^5.12.0",
