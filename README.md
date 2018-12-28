@@ -7,6 +7,7 @@
 [Serverless CLI doc](https://serverless.com/framework/docs/providers/aws/cli-reference/) might be helpful
 ```(bash)
 $ npm i serverless -g
+$ yarn install
 $ sls dynamodb install
 ```
 
@@ -16,7 +17,6 @@ $ sls dynamodb install
 - When you run `sls offline start` DynamoDB will be started locally and seeded according to the `serverless.yml` configuration. Visit DynamoDB Shell at http://localhost:8000/shell
 
 ```(bash)
-$ yarn install
 $ sls offline start
 ```
 
