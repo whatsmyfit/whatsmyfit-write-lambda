@@ -14,7 +14,7 @@
         "tsc": "tsc",
         "test": "yarn run build && jest",
         "u-test": "yarn run build && jest -c jest.config.unit.js",
-        "i-test": "yarn run build && jest -c jest.config.integration.js --detectOpenHandles"
+        "i-test": "yarn run build && serverless decrypt --stage cicd --password 'secretcicdpass' && jest -c jest.config.integration.js --detectOpenHandles"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.17",
