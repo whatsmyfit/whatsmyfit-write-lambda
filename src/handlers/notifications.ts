@@ -1,5 +1,5 @@
 import { Callback, Context, Handler } from 'aws-lambda';
-import { INotificationRequest, INotificationResponse, INotificationStorage } from '../types';
+import { INotification, INotificationResponse, INotificationStorage } from '../types';
 import { NotificationStorage } from '../utils/notificationstorage';
 
 console.log('Loading function');
@@ -9,15 +9,16 @@ const create: Handler = (event: any, context: Context, callback: Callback) => {
         statusCode: 204
     };
 
-    const requestBody: INotificationRequest = event.body as INotificationRequest;
+    const notifications: INotification[] = JSON.parse(event.body) as INotification[];
     const notificationStorage: INotificationStorage = new NotificationStorage();
-    notificationStorage.saveToDynamoDb(requestBody.notifications)
-        .catch((error) => {
-            console.error(`Error while saving Notifications to DynamoDB: ${error}`);
+
+    notificationStorage.saveToDynamoDb(notifications)
+        .then((data) => {
+            console.debug(`Notifications saved successfully to DynamoDB: ${JSON.stringify(data)}`);
             callback(undefined, response);
         })
-        .then((data) => {
-            console.debug(`Notifications saved successfully to DynamoDB: ${data}`);
+        .catch((error) => {
+            console.error(`Error while saving Notifications to DynamoDB: ${error}`);
             callback(undefined, response);
         });
 };

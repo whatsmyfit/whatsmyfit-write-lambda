@@ -13,9 +13,11 @@ export interface INotificationStorageRequest {
 }
 
 interface IRequestItems {
-    [tableName: string]: IPutRequest[] | [];
+    [tableName: string]: IPutRequest[];
 }
 
 interface IPutRequest {
-    Item: INotificationEvent;
+    PutRequest: {
+        Item: INotificationEvent
+    };
 }

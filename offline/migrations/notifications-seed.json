@@ -1,0 +1,42 @@
+[
+    {
+        "id": "c796d733-9779-45c5-a130-20fd1fd0b652",
+        "status": "CREATED",
+        "createdAt": "1545250423856",
+        "collectionType": "activities",
+        "date": "2018-12-19",
+        "ownerId": "3G44RX",
+        "ownerType": "user",
+        "subscriptionId": "3"
+    },
+    {
+        "id": "f93a2a71-0370-11e9-8df1-55acb82cd57a",
+        "status": "PROCESSED",
+        "createdAt": "1545250435275",
+        "collectionType": "activities",
+        "date": "2018-12-19",
+        "ownerId": "3G44RX",
+        "ownerType": "user",
+        "subscriptionId": "3"
+    },
+    {
+        "id": "43fca9c6-91f4-4593-9e5c-fac85beab5a7",
+        "status": "PROCESSED",
+        "createdAt": "1545250564329",
+        "collectionType": "activities",
+        "date": "2018-12-18",
+        "ownerId": "3G44RX",
+        "ownerType": "user",
+        "subscriptionId": "3"
+    },
+    {
+        "id": "42828c93-afb5-4761-ba55-becfda40b11b",
+        "status": "PROCESSED",
+        "createdAt": "1545250572433",
+        "collectionType": "activities",
+        "date": "2018-12-17",
+        "ownerId": "3G44RX",
+        "ownerType": "user",
+        "subscriptionId": "3"
+    }
+]

@@ -1,4 +1,4 @@
-import { verify } from '../../src/handlers/subscriber';
+import { verify } from '../../../src/handlers/subscriber';
 
 describe('notifications handler', () => {
     const SUBSCRIBER_VERIFICATION_CODE_ORIGINAL = process.env.SUBSCRIBER_VERIFICATION_CODE;

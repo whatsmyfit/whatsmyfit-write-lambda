@@ -1,6 +1,6 @@
-import { EventStatus } from '../../src/enums/notificationeventstatus';
-import { INotification, INotificationEvent, INotificationStorageRequest, IPutRequest } from '../../src/types';
-import { NotificationStorage } from '../../src/utils/notificationstorage';
+import { EventStatus } from '../../../src/enums/notificationeventstatus';
+import { INotification, INotificationEvent, INotificationStorageRequest, IPutRequest } from '../../../src/types';
+import { NotificationStorage } from '../../../src/utils/notificationstorage';
 
 describe('saveToDynamoDb()', () => {
     let notificationStorage: NotificationStorage;
@@ -133,7 +133,7 @@ describe('createPutRequest()', () => {
 
         const putRequests: IPutRequest[] = requestItems.RequestItems[tableName];
         const notification: INotification = notifications[0];
-        const notificationEvent: INotificationEvent = putRequests[0].Item;
+        const notificationEvent: INotificationEvent = putRequests[0].PutRequest.Item;
 
         expect(notificationEvent.collectionType).toEqual(notification.collectionType);
         expect(notificationEvent.subscriptionId).toEqual(notification.subscriptionId);
