@@ -1,4 +1,6 @@
 # WhatsMyFit Write Lambda functions
+[![dependencies Status](https://david-dm.org/whatsmyfit/whatsmyfit-write-lambda/status.svg)](https://david-dm.org/whatsmyfit/whatsmyfit-write-lambda)
+[![devDependencies Status](https://david-dm.org/whatsmyfit/whatsmyfit-write-lambda/dev-status.svg)](https://david-dm.org/whatsmyfit/whatsmyfit-write-lambda?type=dev)
 
 ### Install Serverless CLI and Serverless DynamoDB local
 [Serverless CLI doc](https://serverless.com/framework/docs/providers/aws/cli-reference/) might be helpful
