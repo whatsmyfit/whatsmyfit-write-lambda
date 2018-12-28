@@ -30,7 +30,7 @@ describe('notifications api', () => {
     // Helper functions
 
     function startSlsOffline(done: any) {
-        slsOfflineProcess = spawn('sls', ['offline', 'start'], {detached: true});
+        slsOfflineProcess = spawn('sls', ['offline', 'start', '--stage=cicd'], {detached: true});
 
         console.log(`Serverless Offline started with PID: ${slsOfflineProcess.pid}`);
 
@@ -52,7 +52,7 @@ describe('notifications api', () => {
         process.kill(-slsOfflineProcess.pid);
     }
 
-    test('POST notifications returns 204 given valid request', async () => {
+    test('POST notifications should return 204 given valid request', async () => {
         const result = await request(offlineUrl)
             .post(apiPath)
             .send('[{"collectionType":"activities","date":"2018-12-19","ownerId":"3G44RX","ownerType":"user","subscriptionId":"3"}]')
@@ -61,12 +61,38 @@ describe('notifications api', () => {
         expect(result.status).toEqual(204);
     });
 
-    test('POST notifications returns 204 given invalid request', async () => {
+    test('POST notifications should return 204 given missing body data', async () => {
         const result = await request(offlineUrl)
             .post(apiPath)
             .set('Accept', 'application/json');
 
         expect(result.status).toEqual(204);
+    });
+
+    test('GET notifications should return 204 given validation code is valid', async () => {
+        const result = await request(offlineUrl)
+            .get(apiPath)
+            .query({verify: 'mysecretsubscriberverificationcodeincicdstage'})
+            .set('Accept', 'application/json');
+
+        expect(result.status).toEqual(204);
+    });
+
+    test('GET notifications should return 404 given validation codes not equal', async () => {
+        const result = await request(offlineUrl)
+            .get(apiPath)
+            .query({verify: '12345678'})
+            .set('Accept', 'application/json');
+
+        expect(result.status).toEqual(404);
+    });
+
+    test('GET notifications should return 404 given validation code not sent in querystring parameters', async () => {
+        const result = await request(offlineUrl)
+            .get(apiPath)
+            .set('Accept', 'application/json');
+
+        expect(result.status).toEqual(404);
     });
 
 });

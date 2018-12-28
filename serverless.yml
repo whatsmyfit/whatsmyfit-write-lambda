@@ -101,6 +101,7 @@ custom:
     # If you only want to use DynamoDB Local in some stages, declare them here
     stages:
       - dev
+      - cicd
     start:
       port: 8000
       inMemory: true
