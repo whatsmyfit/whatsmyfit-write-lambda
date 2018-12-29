@@ -2,6 +2,12 @@ version: 0.2
 phases:
   install:
     commands:
+      # Setup for Yarn
+      - apt-get update -y
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt-get update -y && apt-get install -y yarn
+      # Install required node packages
       - npm install -g serverless
       - yarn install
       - sls dynamodb install
@@ -10,6 +16,8 @@ phases:
       - yarn run build
   post_build:
     commands:
+      # Run unit tests
       - yarn run cicd-u-test
+      # Run integration tests with sls offline
       - yarn run cicd-decrypt
       - yarn run cicd-i-test
