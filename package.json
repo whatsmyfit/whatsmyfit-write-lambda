@@ -12,9 +12,13 @@
         "clean": "rimraf .build",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "tsc": "tsc",
-        "test": "yarn run build && jest",
-        "u-test": "yarn run build && jest -c jest.config.unit.js",
-        "i-test": "yarn run build && serverless decrypt --stage cicd --password 'secretcicdpass' && jest -c jest.config.integration.js --detectOpenHandles"
+        "cicd-decrypt": "serverless decrypt --stage cicd --password 'secretcicdpass'",
+        "cicd-test": "jest",
+        "cicd-u-test": "jest -c jest.config.unit.js",
+        "cicd-i-test": "jest -c jest.config.integration.js",
+        "test": "yarn run build && yarn run cicd-test",
+        "u-test": "yarn run build && yarn run cicd-u-test",
+        "i-test": "yarn run build && yarn run cicd-decrypt && yarn run cicd-i-test"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.17",
