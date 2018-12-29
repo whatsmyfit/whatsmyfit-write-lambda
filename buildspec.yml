@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm install -g serverless
+      - yarn install
+      - sls dynamodb install
+  build:
+    commands:
+      - yarn run build
+  post_build:
+    commands:
+      - yarn run cicd-u-test
+      - yarn run cicd-decrypt
+      - yarn run cicd-i-test

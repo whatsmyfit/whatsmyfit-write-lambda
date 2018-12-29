@@ -30,7 +30,7 @@ Read [Workflow](https://serverless.com/framework/docs/providers/aws/guide/workfl
 $ yarn run lint
 ```
 
-### Tests
+### Run tests locally
 ```(bash)
 # Run unit and integration tests
 $ yarn run test
@@ -71,6 +71,12 @@ $ serverless encrypt --stage dev --password '<insert encryption password>'
   - AWS Api Gateway full access (create inline policy)
   - AWS Cloud Formation full access (create inline policy)
 - Make sure to install [AWS CLI](https://aws.amazon.com/cli/) on your machine
+
+### CICD with AWS Codepipeline
+To setup Continuous Integration/Continuous Deployment with AWS Codepipeline follow steps below:
+1. Read the sls blog post [CICD for Serverless Part 2 - AWS CodePipeline Integration](https://serverless.com/blog/cicd-for-serverless-part-2/)
+2. Follow the steps in [codePipeline.md](https://github.com/nerdguru/serverlessTodos/blob/master/docs/codePipeline.md), note that AWS console has changed a bit since the README was written
+3. Add `buildspec.yml` file
 
 ### Check outdated NPM dependencies
 ```(bash)
