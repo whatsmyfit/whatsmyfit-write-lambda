@@ -40,10 +40,6 @@ describe('notifications api', () => {
                 done();
             }
         });
-
-        slsOfflineProcess.stderr.on('data', (errData: any) => {
-            console.log(`Error message in stderr: \n${errData}`);
-        });
     }
 
     function stopSlsOffline() {

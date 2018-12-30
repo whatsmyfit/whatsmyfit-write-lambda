@@ -5,6 +5,7 @@ phases:
       # Setup for Yarn
       - npm install -g yarn
       # Setup OpenJDK in order to start sls offline
+      - add-apt-repository ppa:openjdk-r/ppa -y
       - apt-get update -y && apt-get install openjdk-8-jdk -y
       # Install required node packages
       - npm install -g serverless

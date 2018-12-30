@@ -83,6 +83,19 @@ To setup Continuous Integration/Continuous Deployment with AWS Codepipeline foll
 2. Follow the steps in [codePipeline.md](https://github.com/nerdguru/serverlessTodos/blob/master/docs/codePipeline.md), note that AWS console has changed a bit since the README was written
 3. Add `buildspec.yml` file
 
+#### Useful links:
+- [Build Specification Reference for AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
+- [Docker Images Provided by AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)
+- [AWS CodeBuild curated Docker images](https://github.com/aws/aws-codebuild-docker-images)
+
+#### To test and debug CodeBuild locally
+1. Read [Test and Debug Locally with the AWS CodeBuild Agent](https://docs.aws.amazon.com/codebuild/latest/userguide/use-codebuild-agent.html)
+1. Download [codebuild_build.sh](https://github.com/aws/aws-codebuild-docker-images/blob/master/local_builds/codebuild_build.sh) in current folder
+1. `git clone https://github.com/aws/aws-codebuild-docker-images.git`
+1. `cd ubuntu/nodejs/10.14.1/`
+1. `docker build -t aws/codebuild/nodejs:10.14.1 .`
+1. `./codebuild_build.sh -i "aws/codebuild/nodejs:10.14.1" -a "./codebuild"`
+
 ### Check outdated NPM dependencies
 ```(bash)
 $ npm outdated

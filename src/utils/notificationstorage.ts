@@ -85,7 +85,9 @@ class NotificationStorage implements INotificationStorage {
     private createDynamoDbClient(): DynamoDB.DocumentClient {
         const dynamodbOfflineOptions = {
             region: 'localhost',
-            endpoint: 'http://localhost:8000'
+            endpoint: 'http://localhost:8000',
+            accessKeyId: 'MOCK_ACCESS_KEY_ID',
+            secretAccessKey: 'MOCK_SECRET_ACCESS_KEY'
         };
 
         // Env variable IS_OFFLINE is automatically set to TRUE by serverless-offline, otherwise it will be false
