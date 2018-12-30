@@ -47,7 +47,7 @@ $ yarn run i-test
 - Setup new `Node.js` run configuration with **Application Parameters**: `/usr/local/bin/sls offline start`
 - Press the Debug-button
 
-### Set serverless debug log
+### Turn on serverless debug log
 ````(bash)
 $ export SLS_DEBUG=*
 ````
