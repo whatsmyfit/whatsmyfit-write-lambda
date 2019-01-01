@@ -1,9 +1,9 @@
 const {spawn} = require('child_process');
-import * as request from 'supertest';
 
 let slsOfflineProcess: any;
 const timeout = 50000;
 const offlineUrl = 'http://localhost:3000';
+const request = require('supertest')(offlineUrl);
 const apiPath = '/notifications';
 
 describe('notifications api', () => {
@@ -49,46 +49,67 @@ describe('notifications api', () => {
     }
 
     test('POST notifications should return 204 given valid request', async () => {
-        const result = await request(offlineUrl)
+        await request
             .post(apiPath)
             .send('[{"collectionType":"activities","date":"2018-12-19","ownerId":"3G44RX","ownerType":"user","subscriptionId":"3"}]')
-            .set('Accept', 'application/json');
+            .set('Accept', 'application/json')
+            .expect(204)
+            .then((res: any) => {
+                expect(res).toBeDefined();
+                expect(res.body).toBeDefined();
+                expect(res.body).toEqual('');
+            });
 
-        expect(result.status).toEqual(204);
     });
 
     test('POST notifications should return 204 given missing body data', async () => {
-        const result = await request(offlineUrl)
+        await request
             .post(apiPath)
-            .set('Accept', 'application/json');
-
-        expect(result.status).toEqual(204);
+            .set('Accept', 'application/json')
+            .expect(204)
+            .then((res: any) => {
+                expect(res).toBeDefined();
+                expect(res.body).toBeDefined();
+                expect(res.body).toEqual('');
+            });
     });
 
     test('GET notifications should return 204 given validation code is valid', async () => {
-        const result = await request(offlineUrl)
+        await request
             .get(apiPath)
             .query({verify: 'mysecretsubscriberverificationcodeincicdstage'})
-            .set('Accept', 'application/json');
-
-        expect(result.status).toEqual(204);
+            .set('Accept', 'application/json')
+            .expect(204)
+            .then((res: any) => {
+                expect(res).toBeDefined();
+                expect(res.body).toBeDefined();
+                expect(res.body).toEqual('');
+            });
     });
 
     test('GET notifications should return 404 given validation codes not equal', async () => {
-        const result = await request(offlineUrl)
+        await request
             .get(apiPath)
             .query({verify: '12345678'})
-            .set('Accept', 'application/json');
-
-        expect(result.status).toEqual(404);
+            .set('Accept', 'application/json')
+            .expect(404)
+            .then((res: any) => {
+                expect(res).toBeDefined();
+                expect(res.body).toBeDefined();
+                expect(res.body).toEqual('');
+            });
     });
 
     test('GET notifications should return 404 given validation code not sent in querystring parameters', async () => {
-        const result = await request(offlineUrl)
+        await request
             .get(apiPath)
-            .set('Accept', 'application/json');
-
-        expect(result.status).toEqual(404);
+            .set('Accept', 'application/json')
+            .expect(404)
+            .then((res: any) => {
+                expect(res).toBeDefined();
+                expect(res.body).toBeDefined();
+                expect(res.body).toEqual('');
+            });
     });
 
 });
