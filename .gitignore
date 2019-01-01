@@ -12,8 +12,8 @@ jspm_packages
 .idea/
 
 # Build folder
-dist/
-.build/
+.build/**
+!.build/stack.json
 
 # Decrypted files
 secrets.*.yml

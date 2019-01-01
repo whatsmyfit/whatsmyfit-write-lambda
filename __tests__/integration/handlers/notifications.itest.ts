@@ -1,9 +1,11 @@
 const {spawn} = require('child_process');
+// use serverless-stack-output to find service endpoint
+const stackOutput = require('../../../.build/stack.json');
+const url = stackOutput.ServiceEndpoint;
+const request = require('supertest')(url);
 
 let slsOfflineProcess: any;
 const timeout = 50000;
-const offlineUrl = 'http://localhost:3000';
-const request = require('supertest')(offlineUrl);
 const apiPath = '/notifications';
 
 describe('notifications api', () => {

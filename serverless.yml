@@ -86,6 +86,7 @@ plugins:
   - serverless-plugin-typescript
   - serverless-dynamodb-local
   - serverless-offline
+  - serverless-stack-output
   - serverless-secrets-plugin
 
 # Include/Exclude files from package
@@ -95,6 +96,8 @@ package:
 
 # API documentation
 custom:
+  output:
+    file: .build/stack.json
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
   DB_PREFIX: dev
   dynamodb:
