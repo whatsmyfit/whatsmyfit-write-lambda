@@ -22,7 +22,7 @@
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.17",
-        "@types/jest": "^23.3.10",
+        "@types/jest": "^23.3.11",
         "@types/node": "^10.12.18",
         "@types/supertest": "^2.0.7",
         "@types/uuid": "^3.4.4",
@@ -31,7 +31,7 @@
         "del-cli": "^1.1.0",
         "jest": "^23.6.0",
         "serverless-aws-documentation": "^1.1.0",
-        "serverless-dynamodb-local": "^0.2.35",
+        "serverless-dynamodb-local": "^0.2.36",
         "serverless-offline": "^3.31.3",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",
