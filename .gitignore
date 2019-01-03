@@ -2,9 +2,6 @@
 node_modules
 jspm_packages
 
-# Serverless directories
-.serverless
-
 # Local DynamoDB directories
 .dynamodb
 
@@ -13,10 +10,13 @@ jspm_packages
 
 # Build folder
 .build/**
-!.build/stack.json
 
 # Decrypted files
 secrets.*.yml
 
 # Mac
 .DS_STORE
+
+# Serverless package artifacts
+.serverless
+.artifacts

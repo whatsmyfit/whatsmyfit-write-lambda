@@ -5,10 +5,15 @@ service: whatsmyfit-write # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
-  region: eu-west-2
+
+  # Overwrite defaults
+  memorySize: 512 # overwrite default memory of 1024
+  versionFunctions: false # don't create a new function version with each deploy
+  region: eu-west-2 # override default region us-east-1
+
   environment:
     DYNAMODB_TABLE: notifications-${opt:stage, self:provider.stage}
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -94,17 +99,18 @@ package:
   exclude:
     - node_modules/**
 
-# API documentation
 custom:
+  # serverless-stack-output
   output:
-    file: .build/stack.json
+    file: .stackoutput/stack.json # where stack output should be stored by the serverless-stack-output plugin
+  # secrets
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  # serverless-dynamodb-local
   DB_PREFIX: dev
   dynamodb:
     # If you only want to use DynamoDB Local in some stages, declare them here
     stages:
       - dev
-      - cicd
     start:
       port: 8000
       inMemory: true
@@ -115,6 +121,7 @@ custom:
         sources:
           - table: ${self:provider.environment.DYNAMODB_TABLE}
             sources: [./offline/migrations/notifications-seed.json]
+  # API Gateway documentation
   documentation:
     api:
       info:

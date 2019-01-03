@@ -9,7 +9,7 @@
     "license": "ISC",
     "scripts": {
         "build": "yarn run lint && yarn run clean && tsc",
-        "clean": "del-cli '.build/**/*' '!.build/stack.json'",
+        "clean": "del-cli '.build/**/*'",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "tsc": "tsc",
         "cicd-decrypt": "serverless decrypt --stage cicd --password 'secretcicdpass'",

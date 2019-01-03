@@ -2,22 +2,23 @@ version: 0.2
 phases:
   install:
     commands:
-      # Setup for Yarn
+      # Install yarn globally in the codebuild image
       - npm install -g yarn
-      # Setup OpenJDK in order to start sls offline
-      - add-apt-repository ppa:openjdk-r/ppa -y
-      - apt-get update -y && apt-get install openjdk-8-jdk -y
       # Install required node packages
       - npm install -g serverless
       - yarn install
-      - sls dynamodb install
   build:
     commands:
+      # Lint ant compile Typescript
       - yarn run build
-  post_build:
-    commands:
       # Run unit tests
       - yarn run cicd-u-test
-      # Run integration tests with sls offline
+      # Deploy the serverless stack to 'cicd' environment for integration tests
+      - sls deploy --stage cicd -v
+      # Test lambda functions deployed to 'cicd' environment
       - yarn run cicd-decrypt
       - yarn run cicd-i-test
+  post_build:
+    commands:
+      # Remove serverless stack from 'cicd' environment after integration tests are finished
+      - sls remove --stage cicd -v
