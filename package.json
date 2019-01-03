@@ -31,7 +31,7 @@
         "del-cli": "^1.1.0",
         "jest": "^23.6.0",
         "serverless-aws-documentation": "^1.1.0",
-        "serverless-dynamodb-local": "^0.2.36",
+        "serverless-dynamodb-local": "0.2.35",
         "serverless-offline": "^3.31.3",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",
