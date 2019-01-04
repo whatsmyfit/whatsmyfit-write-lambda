@@ -7,18 +7,23 @@
     ],
     "author": "Ismar Slomic",
     "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/whatsmyfit/whatsmyfit-write-lambda.git"
+    },
     "scripts": {
         "build": "yarn run lint && yarn run clean && tsc",
         "clean": "del-cli '.build/**/*'",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "tsc": "tsc",
-        "cicd-decrypt": "serverless decrypt --stage cicd --password 'secretcicdpass'",
-        "cicd-test": "jest",
-        "cicd-u-test": "jest -c jest.config.unit.js",
-        "cicd-i-test": "jest -c jest.config.integration.js",
-        "test": "yarn run build && yarn run cicd-test",
-        "u-test": "yarn run build && yarn run cicd-u-test",
-        "i-test": "yarn run build && yarn run cicd-decrypt && yarn run cicd-i-test"
+        "decrypt:test": "serverless decrypt --stage test --password 'secretpassword'",
+        "decrypt:dev": "serverless decrypt --stage dev --password 'secretpassword'",
+        "test:all": "jest",
+        "test:unit": "jest -c jest.config.unit.js",
+        "test:integration": "jest -c jest.config.integration.js",
+        "build-test:all": "yarn run build && yarn run test:all",
+        "build-test:unit": "yarn run build && yarn run test:unit",
+        "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.17",

@@ -17,7 +17,7 @@ $ sls dynamodb install
 - When you run `sls offline start` DynamoDB will be started locally and seeded according to the `serverless.yml` configuration. Visit DynamoDB Shell at http://localhost:8000/shell
 
 ```(bash)
-$ sls offline start
+$ sls offline start --stage dev
 ```
 
 Open [http://localhost:3000]( http://localhost:3000) in web browser
@@ -33,13 +33,13 @@ $ yarn run lint
 ### Run tests locally
 ```(bash)
 # Run unit and integration tests
-$ yarn run test
+$ yarn run build-test:all
 
 # Run unit tests only
-$ yarn run u-test
+$ yarn run build-test:unit
 
 # Run integration tests only
-$ yarn run i-test
+$ yarn run build-test:integration
 ```
 
 ### Debug with serverless-offline in Intellij
@@ -107,5 +107,5 @@ To setup more advanced pipeline with unit and integration testing and staging to
 
 ### Check for outdated NPM dependencies
 ```(bash)
-$ npm outdated
+$ yarn outdated
 ```

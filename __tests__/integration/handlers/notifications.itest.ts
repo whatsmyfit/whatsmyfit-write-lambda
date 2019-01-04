@@ -34,7 +34,7 @@ describe('notifications api', () => {
     test('GET notifications should return 204 given validation code is valid', async () => {
         await request
             .get(apiPath)
-            .query({verify: 'mysecretsubscriberverificationcodeincicdstage'})
+            .query({verify: 'mysecretsubscriberverificationcode'})
             .set('Accept', 'application/json')
             .expect(HttpStatus.NO_CONTENT)
             .then((res: any) => {

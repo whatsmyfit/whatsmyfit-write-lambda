@@ -12,13 +12,13 @@ phases:
       # Lint ant compile Typescript
       - yarn run build
       # Run unit tests
-      - yarn run cicd-u-test
-      # Deploy the serverless stack to 'cicd' environment for integration tests
-      - sls deploy --stage cicd -v
-      # Test lambda functions deployed to 'cicd' environment
-      - yarn run cicd-decrypt
-      - yarn run cicd-i-test
+      - yarn run test:unit
+      # Deploy the serverless stack to 'test' environment for integration tests
+      - sls deploy --stage test -v
+      # Test lambda functions deployed to 'test' environment
+      - yarn run decrypt:test
+      - yarn run test:integration
   post_build:
     commands:
-      # Remove serverless stack from 'cicd' environment after integration tests are finished
-      - sls remove --stage cicd -v
+      # Remove serverless stack from 'test' environment after integration tests are finished
+      - sls remove --stage test -v
