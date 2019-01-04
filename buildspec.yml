@@ -14,9 +14,9 @@ phases:
       # Run unit tests
       - yarn run test:unit
       # Deploy the serverless stack to 'test' environment for integration tests
+      - yarn run decrypt:test
       - sls deploy --stage test -v
       # Test lambda functions deployed to 'test' environment
-      - yarn run decrypt:test
       - yarn run test:integration
   post_build:
     commands:
