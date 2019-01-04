@@ -6,6 +6,10 @@ const apiPath = '/notifications';
 import * as HttpStatus from 'http-status-codes';
 
 describe('notifications api', () => {
+    beforeAll(() => {
+        console.log(`Integration tests of ServiceEndpoint: ${url}`);
+    });
+
     test('POST notifications should return 204 given valid request', async () => {
         await request
             .post(apiPath)
