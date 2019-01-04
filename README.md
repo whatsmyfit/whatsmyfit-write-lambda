@@ -38,7 +38,7 @@ $ yarn run build-test:all
 # Run unit tests only
 $ yarn run build-test:unit
 
-# Run integration tests only
+# Run integration tests only, remember to run sls offline start --stage dev upfront
 $ yarn run build-test:integration
 ```
 
