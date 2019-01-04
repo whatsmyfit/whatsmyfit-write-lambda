@@ -1,5 +1,5 @@
 // use serverless-stack-output to find service endpoint
-const stackOutput = require('../../../.stackoutput/stack.json');
+const stackOutput = require('../../../stackoutput/stack.json');
 const url = stackOutput.ServiceEndpoint;
 const request = require('supertest')(url);
 const apiPath = '/notifications';

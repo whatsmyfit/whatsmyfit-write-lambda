@@ -25,7 +25,7 @@ resources:
   Resources:
     notificationsTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Delete
+      DeletionPolicy: ${self:custom.${opt:stage}.deletion_policy}
       Properties:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
@@ -102,9 +102,16 @@ package:
 custom:
   # serverless-stack-output
   output:
-    file: .stackoutput/stack.json # where stack output should be stored by the serverless-stack-output plugin
+    file: stackoutput/stack.json # where stack output should be stored by the serverless-stack-output plugin
   # secrets
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  # DynamoDB deletion policy when deleting CF stack in different stages
+  test:
+    deletion_policy: Delete
+  qa:
+    deletion_policy: Delete
+  prod:
+    deletion_policy: Retain
   # serverless-dynamodb-local
   DB_PREFIX: dev
   dynamodb:
