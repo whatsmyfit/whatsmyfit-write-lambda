@@ -185,10 +185,10 @@
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.0.tgz#4b7daf2c51696cfc70b942c11690528229d1a1ce"
   integrity sha512-EIjmpvnHj+T4nMcKwHwxZKUfDmphIKJc2qnEMhSoOvr1lYEQpuRKRz8orWr//krYIIArS/KGGLfL2YGVUYXmIA==
 
-"@types/jest@^23.3.11":
-  version "23.3.11"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.11.tgz#d3a936ae753d9e484965f5cbd19027c2b8af2551"
-  integrity sha512-eroF85PoG87XjCwzxey7yBsQNkIY/TV5myKKSG/022A0FW25afdu/uub6JDMS5eT68zBBt82S+w/MFOTjeLM3Q==
+"@types/jest@^23.3.12":
+  version "23.3.12"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.12.tgz#7e0ced251fa94c3bc2d1023d4b84b2992fa06376"
+  integrity sha512-/kQvbVzdEpOq4tEWT79yAHSM4nH4xMlhJv2GrLVQt4Qmo8yYsPdioBM1QpN/2GX1wkfMnyXvdoftvLUr0LBj7Q==
 
 "@types/node@*":
   version "10.12.5"
@@ -487,10 +487,10 @@ aws-sdk@^2.369.0:
     uuid "3.1.0"
     xml2js "0.4.19"
 
-aws-sdk@^2.383.0:
-  version "2.383.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.383.0.tgz#86045c0a4a4898dca84a4877cbe765b7dc0f8bba"
-  integrity sha512-PN+s+NTABtBloS46c7C2dvoEzrdY2NZ5nsfljL3xDX2rvjJEQxdchS2jcCpyc5ZNudFwta66wY4EGBZqf4Attw==
+aws-sdk@^2.384.0:
+  version "2.384.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.384.0.tgz#c8fdce7c72f068f6d8b198b53cf33b6f35f3e811"
+  integrity sha512-E+pIOWFNhQH7GCkOl5GU+Vl42MlaKtAq0Yenaa2fRGult9097u7TnUx45V1pNKMCN9RnEFWQy3ZH1TEPEYJ0fw==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
