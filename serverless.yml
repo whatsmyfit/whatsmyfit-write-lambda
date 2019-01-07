@@ -104,8 +104,9 @@ custom:
   # serverless-stack-output
   output:
     file: stackoutput/stack.json # where stack output should be stored by the serverless-stack-output plugin
-  # secrets
+  # serverless-secrets-plugin
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  secretsFilePathPrefix: secrets # path prefix where secret files are stored
   # DynamoDB deletion policy when deleting CF stack in different stages
   test:
     deletion_policy: Delete
