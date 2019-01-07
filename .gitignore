@@ -20,3 +20,6 @@ secrets.*.yml
 # Serverless package artifacts
 .serverless
 .artifacts
+
+# Stack output changes should not be commited to git
+/stackoutput/stack.json

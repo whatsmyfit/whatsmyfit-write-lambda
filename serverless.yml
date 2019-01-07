@@ -87,12 +87,13 @@ functions:
 
 # Serverless Plugins
 plugins:
-  - serverless-aws-documentation
+  - '@anttiviljami/serverless-stack-output' # saving service endpoint after creating stack in order to use the endpoints url in integration tests
+  - serverless-aws-documentation # swagger doc
   - serverless-plugin-typescript
-  - serverless-dynamodb-local
-  - serverless-offline
-  - serverless-stack-output
-  - serverless-secrets-plugin
+  - serverless-dynamodb-local # local aws dynamodb instance, dev only
+  - serverless-offline # deploying lambda and api gateway locally in offline mode
+  - serverless-secrets-plugin # encrypting / decrypting secrets
+  - serverless-plugin-include-dependencies # making sure that only npm dependencies for production is packaged and deployed
 
 # Include/Exclude files from package
 package:

@@ -26,6 +26,7 @@
         "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration"
     },
     "devDependencies": {
+        "@anttiviljami/serverless-stack-output": "^0.3.1",
         "@types/aws-lambda": "^8.10.17",
         "@types/jest": "^23.3.11",
         "@types/node": "^10.12.18",
@@ -38,9 +39,9 @@
         "serverless-aws-documentation": "^1.1.0",
         "serverless-dynamodb-local": "0.2.35",
         "serverless-offline": "^3.31.3",
+        "serverless-plugin-include-dependencies": "^3.2.1",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",
-        "serverless-stack-output": "^0.2.3",
         "supertest": "^3.3.0",
         "ts-jest": "^23.10.5",
         "ts-node": "^7.0.1",
