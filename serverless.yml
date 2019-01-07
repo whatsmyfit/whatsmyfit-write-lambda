@@ -25,7 +25,7 @@ resources:
   Resources:
     notificationsTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: ${self:custom.${opt:stage}.deletion_policy}
+      DeletionPolicy: ${self:custom.${opt:stage, self:provider.stage}.deletion_policy}
       Properties:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
@@ -105,9 +105,11 @@ custom:
   output:
     file: __tests__/stackoutput/stack.json # where stack output should be stored by the serverless-stack-output plugin
   # serverless-secrets-plugin
-  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  secrets: ${file(secrets/secrets.${opt:stage, self:provider.stage}.yml)}
   secretsFilePathPrefix: secrets # path prefix where secret files are stored
   # DynamoDB deletion policy when deleting CF stack in different stages
+  dev:
+    deletion_policy: Delete
   test:
     deletion_policy: Delete
   qa:
@@ -129,7 +131,7 @@ custom:
       domain:
         sources:
           - table: ${self:provider.environment.DYNAMODB_TABLE}
-            sources: [./offline/migrations/notifications-seed.json]
+            sources: [./__tests__/dbseed/notifications-seed.json]
   # API Gateway documentation
   documentation:
     api:
