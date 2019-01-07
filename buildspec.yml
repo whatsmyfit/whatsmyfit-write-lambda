@@ -14,12 +14,11 @@ phases:
       # Run unit tests
       - yarn run test:unit
       # Deploy the serverless stack to 'test' environment for integration tests
-      - export SLS_DEBUG=*
       - yarn run decrypt:test
-      - sls deploy --stage test -v
+      - yarn run deploy:test
       # Test lambda functions deployed to 'test' environment
       - yarn run test:integration
   post_build:
     commands:
       # Remove serverless stack from 'test' environment after integration tests are finished
-      - sls remove --stage test -v
+      - yarn run remove:test

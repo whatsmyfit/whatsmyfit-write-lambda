@@ -23,7 +23,9 @@
         "test:integration": "jest -c jest.config.integration.js",
         "build-test:all": "yarn run build && yarn run test:all",
         "build-test:unit": "yarn run build && yarn run test:unit",
-        "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration"
+        "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration",
+        "deploy:test": "export SLS_DEBUG=* && sls deploy --stage test -v",
+        "remove:test": "sls remove --stage test -v"
     },
     "devDependencies": {
         "@anttiviljami/serverless-stack-output": "^0.3.1",
