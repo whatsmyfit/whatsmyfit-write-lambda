@@ -25,7 +25,11 @@
         "build-test:unit": "yarn run build && yarn run test:unit",
         "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration",
         "deploy:test": "export SLS_DEBUG=* && sls deploy --stage test -v",
-        "remove:test": "sls remove --stage test -v"
+        "remove:test": "sls remove --stage test -v",
+        "package:qa": "mkdir -p artifacts/qa && sls package --package artifacts/qa --stage qa -v",
+        "package:prod": "mkdir -p artifacts/prod && sls package --package artifacts/prod --stage prod -v",
+        "deploy:qa": "echo serverless deploy --stage qa --package $CODEBUILD_SRC_DIR/artifacts/qa -v",
+        "deploy:prod": "echo serverless deploy --stage prod --package $CODEBUILD_SRC_DIR/artifacts/prod -v"
     },
     "devDependencies": {
         "@anttiviljami/serverless-stack-output": "^0.3.1",
@@ -40,7 +44,7 @@
         "jest": "^23.6.0",
         "serverless-aws-documentation": "^1.1.0",
         "serverless-dynamodb-local": "0.2.35",
-        "serverless-offline": "^3.31.3",
+        "serverless-offline": "^3.32.1",
         "serverless-plugin-include-dependencies": "^3.2.1",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",

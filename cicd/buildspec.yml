@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   install:
     commands:
@@ -18,7 +19,18 @@ phases:
       - yarn run deploy:test
       # Test lambda functions deployed to 'test' environment
       - yarn run test:integration
+      # Create deployment package for 'qa' environment
+      - yarn run package:qa
+      # Create deployment package for 'prod' environment
+      - yarn run package:prod
   post_build:
     commands:
       # Remove serverless stack from 'test' environment after integration tests are finished
       - yarn run remove:test
+
+artifacts:
+  files:
+    # Export artifacts needed for 'qa' and 'prod' deployments to an S3 bucket
+    - artifacts/**/*
+    - serverless.yml
+    - cicd/deploy.sh
