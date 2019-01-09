@@ -32,7 +32,9 @@ phases:
 
 artifacts:
   files:
-    # Export artifacts needed for 'qa' and 'prod' deployments to an S3 bucket
+    # Export following files and folder needed for 'qa' and 'prod' deployments to an S3 bucket.
+    # Reason for including package.json as well is because we refer to yarn script 'deploy' in deploy.sh
     - artifacts/**/*
     - serverless.yml
     - cicd/deploy.sh
+    - package.json

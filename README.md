@@ -105,6 +105,9 @@ To setup more advanced pipeline with unit and integration testing and staging to
 1. `docker build -t aws/codebuild/nodejs:10.14.1 .`
 1. `./codebuild_build.sh -i "aws/codebuild/nodejs:10.14.1" -a "./codebuild"`
 
+You can also ssh into the CodeBuild docker image to debug and run build steps manually with
+`docker run -it -v whatsmyfit-write-lambda:/whatsmyfit-write-lambda aws/codebuild/nodejs:10.14.1 /bin/bash`
+
 ### Check for outdated NPM dependencies
 ```(bash)
 $ yarn outdated
