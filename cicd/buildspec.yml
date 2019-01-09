@@ -37,4 +37,5 @@ artifacts:
     - artifacts/**/*
     - serverless.yml
     - cicd/deploy.sh
+    - cicd/stackoutput/stack.json
     - package.json
