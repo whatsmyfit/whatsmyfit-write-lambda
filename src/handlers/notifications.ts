@@ -1,4 +1,5 @@
 import { Callback, Context, Handler } from 'aws-lambda';
+import * as HttpStatus from 'http-status-codes';
 import { INotification, INotificationResponse, INotificationStorage } from '../types';
 import { NotificationStorage } from '../utils/notificationstorage';
 
@@ -6,7 +7,7 @@ console.log('Loading function');
 
 const create: Handler = (event: any, context: Context, callback: Callback) => {
     const response: INotificationResponse = {
-        statusCode: 204
+        statusCode: HttpStatus.NO_CONTENT
     };
 
     const notifications: INotification[] = JSON.parse(event.body) as INotification[];

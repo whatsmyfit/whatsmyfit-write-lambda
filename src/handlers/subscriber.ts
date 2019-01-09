@@ -1,4 +1,5 @@
 import { Callback, Context, Handler } from 'aws-lambda';
+import * as HttpStatus from 'http-status-codes';
 import { ISubscriberVerifyRequestParams, ISubscriberVerifyResponse } from '../types';
 
 const verify: Handler = (event: any, context: Context, callback: Callback) => {
@@ -9,11 +10,11 @@ const verify: Handler = (event: any, context: Context, callback: Callback) => {
 
     if (!queryStringParameters || !queryStringParameters.verify || queryStringParameters.verify !== validationCode) {
         response = {
-            statusCode: 404
+            statusCode: HttpStatus.NOT_FOUND
         };
     } else {
         response = {
-            statusCode: 204
+            statusCode: HttpStatus.NO_CONTENT
         };
     }
 

@@ -7,32 +7,47 @@
     ],
     "author": "Ismar Slomic",
     "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/whatsmyfit/whatsmyfit-write-lambda.git"
+    },
     "scripts": {
         "build": "yarn run lint && yarn run clean && tsc",
-        "clean": "rimraf .build",
+        "clean": "del-cli '.build/**/*'",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
         "tsc": "tsc",
-        "cicd-decrypt": "serverless decrypt --stage cicd --password 'secretcicdpass'",
-        "cicd-test": "jest",
-        "cicd-u-test": "jest -c jest.config.unit.js",
-        "cicd-i-test": "jest -c jest.config.integration.js",
-        "test": "yarn run build && yarn run cicd-test",
-        "u-test": "yarn run build && yarn run cicd-u-test",
-        "i-test": "yarn run build && yarn run cicd-decrypt && yarn run cicd-i-test"
+        "decrypt:test": "serverless decrypt --stage test --password 'secretpassword'",
+        "decrypt:dev": "serverless decrypt --stage dev --password 'secretpassword'",
+        "decrypt:qa": "serverless decrypt --stage qa",
+        "decrypt:prod": "serverless decrypt --stage prod",
+        "test:all": "jest",
+        "test:unit": "jest -c jest.config.unit.js",
+        "test:integration": "jest -c jest.config.integration.js",
+        "build-test:all": "yarn run build && yarn run test:all",
+        "build-test:unit": "yarn run build && yarn run test:unit",
+        "build-test:integration": "yarn run build && yarn run decrypt:test && yarn run decrypt:dev && yarn run test:integration",
+        "remove:test": "sls remove --stage test -v",
+        "package:qa": "mkdir -p artifacts/qa && sls package --package artifacts/qa --stage qa -v",
+        "package:prod": "mkdir -p artifacts/prod && sls package --package artifacts/prod --stage prod -v",
+        "deploy:test": "export SLS_DEBUG=* && sls deploy --stage test -v",
+        "deploy:qa": "export SLS_DEBUG=* && sls deploy --stage qa --package $CODEBUILD_SRC_DIR/artifacts/qa -v",
+        "deploy:prod": "export SLS_DEBUG=* && sls deploy --stage prod --package $CODEBUILD_SRC_DIR/artifacts/prod -v"
     },
     "devDependencies": {
+        "@anttiviljami/serverless-stack-output": "^0.3.1",
         "@types/aws-lambda": "^8.10.17",
-        "@types/jest": "^23.3.10",
+        "@types/jest": "^23.3.12",
         "@types/node": "^10.12.18",
         "@types/supertest": "^2.0.7",
         "@types/uuid": "^3.4.4",
-        "aws-sdk": "^2.382.0",
+        "aws-sdk": "^2.384.0",
         "aws-sdk-mock": "^4.3.0",
+        "del-cli": "^1.1.0",
         "jest": "^23.6.0",
-        "rimraf": "^2.6.2",
         "serverless-aws-documentation": "^1.1.0",
-        "serverless-dynamodb-local": "^0.2.35",
-        "serverless-offline": "^3.31.3",
+        "serverless-dynamodb-local": "0.2.35",
+        "serverless-offline": "^3.32.1",
+        "serverless-plugin-include-dependencies": "^3.2.1",
         "serverless-plugin-typescript": "^1.1.5",
         "serverless-secrets-plugin": "^0.1.0",
         "supertest": "^3.3.0",
@@ -43,6 +58,7 @@
         "typescript-eslint-parser": "^21.0.2"
     },
     "dependencies": {
+        "http-status-codes": "^1.3.0",
         "uuid": "^3.3.2"
     }
 }

@@ -1,3 +1,4 @@
+import * as HttpStatus from 'http-status-codes';
 import { create } from '../../../src/handlers/notifications';
 import { INotification } from '../../../src/types';
 
@@ -53,7 +54,7 @@ describe('notifications handler', () => {
 
         // @ts-ignore
         create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
-            expect(response.statusCode).toEqual(204);
+            expect(response.statusCode).toEqual(HttpStatus.NO_CONTENT);
             expect(spyConsoleDebug).toHaveBeenCalledTimes(1);
             expect(spyConsoleError).toHaveBeenCalledTimes(0);
         });
@@ -64,7 +65,7 @@ describe('notifications handler', () => {
 
         // @ts-ignore
         create({body: JSON.stringify(notifications)}, null, (error: any, response: any) => {
-            expect(response.statusCode).toEqual(204);
+            expect(response.statusCode).toEqual(HttpStatus.NO_CONTENT);
             expect(spyConsoleDebug).toHaveBeenCalledTimes(0);
             expect(spyConsoleError).toHaveBeenCalledTimes(1);
         });

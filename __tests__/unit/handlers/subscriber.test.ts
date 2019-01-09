@@ -1,3 +1,4 @@
+import * as HttpStatus from 'http-status-codes';
 import { verify } from '../../../src/handlers/subscriber';
 
 describe('notifications handler', () => {
@@ -21,7 +22,7 @@ describe('notifications handler', () => {
 
         // @ts-ignore
         verify(event, null, (error: any, response: any) => {
-            expect(response.statusCode).toEqual(204);
+            expect(response.statusCode).toEqual(HttpStatus.NO_CONTENT);
         });
     });
 
@@ -34,7 +35,7 @@ describe('notifications handler', () => {
 
         // @ts-ignore
         verify(event, null, (error: any, response: any) => {
-            expect(response.statusCode).toEqual(404);
+            expect(response.statusCode).toEqual(HttpStatus.NOT_FOUND);
         });
     });
 
@@ -45,7 +46,7 @@ describe('notifications handler', () => {
 
         // @ts-ignore
         verify(event, null, (error: any, response: any) => {
-            expect(response.statusCode).toEqual(404);
+            expect(response.statusCode).toEqual(HttpStatus.NOT_FOUND);
         });
     });
 });

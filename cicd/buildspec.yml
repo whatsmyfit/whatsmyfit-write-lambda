@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # Install yarn globally in the codebuild image
+      - npm install -g yarn
+      # Install required node packages
+      - npm install -g serverless
+      - yarn install
+  build:
+    commands:
+      # Lint ant compile Typescript
+      - yarn run build
+      # Run unit tests
+      - yarn run test:unit
+      # Deploy the serverless stack to 'test' environment for integration tests
+      - yarn run decrypt:test
+      - yarn run deploy:test
+      # Test lambda functions deployed to 'test' environment
+      - yarn run test:integration
+      # Create deployment package for 'qa' environment
+      - yarn run decrypt:qa --password $DECRYPT_SECRETS_QA
+      - yarn run package:qa
+      # Create deployment package for 'prod' environment
+      - yarn run decrypt:prod --password $DECRYPT_SECRETS_PROD
+      - yarn run package:prod
+  post_build:
+    commands:
+      # Remove serverless stack from 'test' environment after integration tests are finished
+      - yarn run remove:test
+
+artifacts:
+  files:
+    # Export following files and folder needed for 'qa' and 'prod' deployments to an S3 bucket.
+    # Reason for including package.json as well is because we refer to yarn script 'deploy' in deploy.sh
+    - artifacts/**/*
+    - serverless.yml
+    - cicd/deploy.sh
+    - cicd/stackoutput/stack.json
+    - package.json

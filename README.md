@@ -17,7 +17,7 @@ $ sls dynamodb install
 - When you run `sls offline start` DynamoDB will be started locally and seeded according to the `serverless.yml` configuration. Visit DynamoDB Shell at http://localhost:8000/shell
 
 ```(bash)
-$ sls offline start
+$ sls offline start --stage dev
 ```
 
 Open [http://localhost:3000]( http://localhost:3000) in web browser
@@ -33,13 +33,13 @@ $ yarn run lint
 ### Run tests locally
 ```(bash)
 # Run unit and integration tests
-$ yarn run test
+$ yarn run build-test:all
 
 # Run unit tests only
-$ yarn run u-test
+$ yarn run build-test:unit
 
-# Run integration tests only
-$ yarn run i-test
+# Run integration tests only, remember to run sls offline start --stage dev upfront
+$ yarn run build-test:integration
 ```
 
 ### Debug with serverless-offline in Intellij
@@ -78,10 +78,19 @@ $ serverless encrypt --stage dev --password '<insert encryption password>'
 - Make sure to install [AWS CLI](https://aws.amazon.com/cli/) on your machine
 
 ### CICD with AWS Codepipeline
-To setup Continuous Integration/Continuous Deployment with AWS Codepipeline follow steps below:
+
+#### Simple
+To setup simple Continuous Integration/Continuous Deployment with AWS Codepipeline follow steps below:
 1. Read the sls blog post [CICD for Serverless Part 2 - AWS CodePipeline Integration](https://serverless.com/blog/cicd-for-serverless-part-2/)
 2. Follow the steps in [codePipeline.md](https://github.com/nerdguru/serverlessTodos/blob/master/docs/codePipeline.md), note that AWS console has changed a bit since the README was written
 3. Add `buildspec.yml` file
+
+#### Advanced
+To setup more advanced pipeline with unit and integration testing and staging to production stages follow steps below:
+1. Read steps in following Serverless CI/CD Tutorial: 
+[Part 1: Build](https://www.1strategy.com/blog/2018/02/27/serverless-cicd-tutorial-part-1-build/), 
+[Part 2: Test](https://www.1strategy.com/blog/2018/03/06/serverless-cicd-tutorial-part-2-test/), 
+[Part 3: Deploy](https://www.1strategy.com/blog/2018/03/13/serverless-cicd-tutorial-part-3-deploy/)
 
 #### Useful links:
 - [Build Specification Reference for AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
@@ -96,7 +105,10 @@ To setup Continuous Integration/Continuous Deployment with AWS Codepipeline foll
 1. `docker build -t aws/codebuild/nodejs:10.14.1 .`
 1. `./codebuild_build.sh -i "aws/codebuild/nodejs:10.14.1" -a "./codebuild"`
 
-### Check outdated NPM dependencies
+You can also ssh into the CodeBuild docker image to debug and run build steps manually with
+`docker run -it -v whatsmyfit-write-lambda:/whatsmyfit-write-lambda aws/codebuild/nodejs:10.14.1 /bin/bash`
+
+### Check for outdated NPM dependencies
 ```(bash)
-$ npm outdated
+$ yarn outdated
 ```
