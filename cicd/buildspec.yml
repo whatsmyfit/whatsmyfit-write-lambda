@@ -20,8 +20,10 @@ phases:
       # Test lambda functions deployed to 'test' environment
       - yarn run test:integration
       # Create deployment package for 'qa' environment
+      - yarn run decrypt:qa --password $DECRYPT_SECRETS_QA
       - yarn run package:qa
       # Create deployment package for 'prod' environment
+      - yarn run decrypt:prod --password $DECRYPT_SECRETS_PROD
       - yarn run package:prod
   post_build:
     commands:

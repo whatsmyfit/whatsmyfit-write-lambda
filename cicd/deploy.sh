@@ -2,6 +2,7 @@
 
 # Install yarn globally in the codebuild image
 npm install -g yarn
+
 # Install required npm packages for running serverless stack, make sure this reflects list of plugins in serverless.yml
 npm install -g serverless
 npm install \
@@ -13,4 +14,5 @@ npm install \
     serverless-secrets-plugin \
     serverless-plugin-include-dependencies
 
-yarn run deploy:$env
+# Deploy serverless stack to specific environment based on env variable set by codebuild project
+yarn run deploy:$ENV
