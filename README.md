@@ -89,7 +89,7 @@ To setup simple Continuous Integration/Continuous Deployment with AWS Codepipeli
 To setup more advanced pipeline with unit and integration testing and staging to production stages follow steps below:
 1. Read steps in following Serverless CI/CD Tutorial: 
 [Part 1: Build](https://www.1strategy.com/blog/2018/02/27/serverless-cicd-tutorial-part-1-build/), 
-[Part 2: Test](https://www.1strategy.com/blog/2018/03/06/serverless-cicd-tutorial-part-2-test/) 
+[Part 2: Test](https://www.1strategy.com/blog/2018/03/06/serverless-cicd-tutorial-part-2-test/), 
 [Part 3: Deploy](https://www.1strategy.com/blog/2018/03/13/serverless-cicd-tutorial-part-3-deploy/)
 
 #### Useful links:
