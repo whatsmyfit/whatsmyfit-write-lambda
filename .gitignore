@@ -22,4 +22,4 @@ secrets.*.yml
 /artifacts/
 
 # Stack output changes should not be commited to git
-/__tests__/stackoutput/stack.json
+/cicd/stackoutput/stack.json
